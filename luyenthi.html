@@ -1,0 +1,312 @@
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luyện Thi JLPT - DEHA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Baloo 2', cursive; }
+    .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+    .countdown { font-family: monospace; }
+    .option-hover:hover { background-color: #f0f7ff; }
+    .question-nav-button.active { 
+      background-color: #003D91; 
+      color: white; 
+    }
+    .timer-warning { animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+      0% { background-color: #ef4444; }
+      50% { background-color: #f87171; }
+      100% { background-color: #ef4444; }
+    }
+  </style>
+</head>
+<body class="bg-[#f7f8ff] text-[#001F54]">
+    <div id="header-container"></div>
+
+  <!-- Chọn bài thi phần -->
+  <div id="quiz-selection" class="max-w-6xl mx-auto py-10 px-6">
+    <h1 class="text-3xl font-bold text-center mb-10">Luyện Thi JLPT</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- N5 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-blue-600 text-white p-4">
+          <h2 class="text-xl font-bold">N5 - Nhập môn</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Từ vựng & Ngữ pháp</span>
+            <span class="font-bold">25 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đọc hiểu</span>
+            <span class="font-bold">15 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Nghe hiểu</span>
+            <span class="font-bold">20 câu</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 120 phút</span>
+            <span>Đạt: ≥ 80 điểm</span>
+          </div>
+          <button onclick="startQuiz('N5')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Luyện thi ngay</button>
+        </div>
+      </div>
+      
+      <!-- N4 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-blue-500 text-white p-4">
+          <h2 class="text-xl font-bold">N4 - Sơ cấp</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Từ vựng & Ngữ pháp</span>
+            <span class="font-bold">30 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đọc hiểu</span>
+            <span class="font-bold">20 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Nghe hiểu</span>
+            <span class="font-bold">20 câu</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 120 phút</span>
+            <span>Đạt: ≥ 90 điểm</span>
+          </div>
+          <button onclick="startQuiz('N4')" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Luyện thi ngay</button>
+        </div>
+      </div>
+      
+      <!-- N3 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-green-600 text-white p-4">
+          <h2 class="text-xl font-bold">N3 - Trung cấp</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Từ vựng & Ngữ pháp</span>
+            <span class="font-bold">35 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đọc hiểu</span>
+            <span class="font-bold">25 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Nghe hiểu</span>
+            <span class="font-bold">25 câu</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 140 phút</span>
+            <span>Đạt: ≥ 95 điểm</span>
+          </div>
+          <button onclick="startQuiz('N3')" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Luyện thi ngay</button>
+        </div>
+      </div>
+      
+      <!-- N2 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-yellow-600 text-white p-4">
+          <h2 class="text-xl font-bold">N2 - Nâng cao</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Từ vựng & Ngữ pháp</span>
+            <span class="font-bold">40 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đọc hiểu</span>
+            <span class="font-bold">30 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Nghe hiểu</span>
+            <span class="font-bold">30 câu</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 155 phút</span>
+            <span>Đạt: ≥ 90 điểm</span>
+          </div>
+          <button onclick="startQuiz('N2')" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700">Luyện thi ngay</button>
+        </div>
+      </div>
+      
+      <!-- N1 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-red-600 text-white p-4">
+          <h2 class="text-xl font-bold">N1 - Cao cấp</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Từ vựng & Ngữ pháp</span>
+            <span class="font-bold">50 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đọc hiểu</span>
+            <span class="font-bold">35 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Nghe hiểu</span>
+            <span class="font-bold">35 câu</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 170 phút</span>
+            <span>Đạt: ≥ 100 điểm</span>
+          </div>
+          <button onclick="startQuiz('N1')" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700">Luyện thi ngay</button>
+        </div>
+      </div>
+      
+      <!-- Thử sức nhanh -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-4">
+          <h2 class="text-xl font-bold">Thử sức nhanh</h2>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đề ngắn tổng hợp</span>
+            <span class="font-bold">15 câu</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Đa dạng cấp độ</span>
+            <span class="font-bold">N5-N3</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-700">Thời gian ngắn</span>
+            <span class="font-bold">20 phút</span>
+          </div>
+          <div class="flex justify-between text-sm text-gray-500">
+            <span>Thời gian: 20 phút</span>
+            <span>Đánh giá nhanh</span>
+          </div>
+          <button onclick="startQuiz('quick')" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 rounded-lg hover:opacity-90">Bắt đầu ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phần làm bài thi -->
+  <div id="quiz-container" class="max-w-5xl mx-auto py-6 px-6 hidden">
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center space-x-4">
+        <button onclick="returnToSelection()" class="flex items-center space-x-1 text-blue-600 hover:underline">
+          <span>←</span>
+          <span>Quay lại</span>
+        </button>
+        <h2 id="quiz-title" class="text-2xl font-bold">Luyện thi N5</h2>
+      </div>
+      <div id="quiz-timer" class="countdown bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-bold">
+        Thời gian: 00:00
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+      <!-- Navigation buttons -->
+      <div class="flex flex-wrap gap-2 mb-6 overflow-auto pb-2" id="question-nav">
+        <!-- Question buttons will be generated here -->
+      </div>
+
+      <!-- Current question -->
+      <div id="current-question" class="mb-8 space-y-8">
+        <!-- Question content will be loaded here -->
+      </div>
+
+      <div class="flex justify-between mt-8">
+        <button id="prev-btn" onclick="navigateQuestion(-1)" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 disabled:opacity-50">Câu trước</button>
+        <button id="next-btn" onclick="navigateQuestion(1)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Câu tiếp theo</button>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button id="submit-btn" onclick="confirmSubmit()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Nộp bài</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kết quả bài thi -->
+  <div id="results-container" class="max-w-5xl mx-auto py-6 px-6 hidden">
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center space-x-4">
+        <button onclick="returnToSelection()" class="flex items-center space-x-1 text-blue-600 hover:underline">
+          <span>←</span>
+          <span>Quay lại</span>
+        </button>
+        <h2 id="result-title" class="text-2xl font-bold">Kết quả thi N5</h2>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+      <!-- Score summary -->
+      <div class="flex flex-col md:flex-row bg-gray-100 rounded-lg p-6 mb-6">
+        <div class="flex-1 text-center mb-4 md:mb-0">
+          <h3 class="text-lg font-bold mb-2">Tổng điểm</h3>
+          <div id="total-score" class="text-4xl font-bold text-blue-600">0/0</div>
+        </div>
+        <div class="flex-1 text-center mb-4 md:mb-0">
+          <h3 class="text-lg font-bold mb-2">Số câu đúng</h3>
+          <div id="correct-answers" class="text-4xl font-bold text-green-600">0/0</div>
+        </div>
+        <div class="flex-1 text-center">
+          <h3 class="text-lg font-bold mb-2">Thời gian</h3>
+          <div id="time-taken" class="text-4xl font-bold text-yellow-600">00:00</div>
+        </div>
+      </div>
+
+      <!-- Result status -->
+      <div id="result-status" class="text-center mb-6">
+        <div id="pass-icon" class="text-6xl mb-2">🎉</div>
+        <h3 id="pass-text" class="text-2xl font-bold"></h3>
+        <p id="pass-message" class="text-gray-600"></p>
+      </div>
+
+      <!-- Results navigation -->
+      <div class="flex flex-wrap gap-2 mb-6 overflow-auto pb-2" id="results-nav">
+        <!-- Result buttons will be generated here -->
+      </div>
+
+      <!-- Review answers -->
+      <div id="review-questions" class="space-y-10">
+        <!-- Reviewed questions will be loaded here -->
+      </div>
+
+      <div class="mt-8 flex justify-center">
+        <button onclick="returnToSelection()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Quay lại trang chọn đề</button>
+      </div>
+    </div>
+  </div>
+
+    <div id="footer-container"></div>
+
+  <!-- Modal confirm nộp bài -->
+  <div id="submit-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-md w-full">
+      <h3 class="text-xl font-bold mb-4">Xác nhận nộp bài</h3>
+      <p class="mb-6">Bạn có chắc chắn muốn nộp bài không? Hãy kiểm tra lại các câu trả lời trước khi nộp.</p>
+      <div id="submission-summary" class="bg-gray-100 p-4 rounded mb-6">
+        <div id="answered-summary">Đã trả lời: <span class="font-bold">0/0</span></div>
+        <div id="unanswered-summary">Chưa trả lời: <span class="font-bold">0/0</span></div>
+      </div>
+      <div class="flex justify-end space-x-4">
+        <button onclick="closeSubmitModal()" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100">Quay lại</button>
+        <button onclick="submitQuiz()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Nộp bài</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal hết giờ -->
+  <div id="timeout-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-md w-full">
+      <h3 class="text-xl font-bold mb-4">Đã hết thời gian làm bài!</h3>
+      <p class="mb-6">Thời gian làm bài đã kết thúc. Hệ thống sẽ tự động chấm điểm bài làm của bạn.</p>
+      <div class="flex justify-center">
+        <button onclick="submitQuiz()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem kết quả</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="./script/luyenthi.js"></script>
+  <script src="./script/index.js"></script>
+
+</html>
