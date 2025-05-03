@@ -14,3 +14,5 @@ Email: yennhiph03@gmail.com
 Password: yennhi2k3
 
 Hoặc có thể đăng ký account mới thao tác các chức năng.
+
+Video demo: https://drive.google.com/drive/u/3/folders/1wZ5CMFvKqaKJi-vKdm87f5jq6tGk5D5U
